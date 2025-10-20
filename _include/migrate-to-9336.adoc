@@ -565,13 +565,13 @@ Group Port-       Type     Protocol  Member Ports
 
 . Enable auto-revert on the cluster LIFs.
 +
-`network interface modify -vserver Cluster -lif * -auto-revert true`
+`network interface modify -vserver Cluster -lif * -auto-revert true` (this will usually not automatically revert the LIFs)
 
 . Verify that the cluster LIFs have reverted to their home ports (this might take a minute):
 +
 `network interface show -vserver Cluster`
 +
-If the cluster LIFs have not reverted to their home port, manually revert them: 
+If the cluster LIFs have not reverted to their home port, manually revert them (must login or connect to each physical node to revert cluster LIFs that are local to that node):
 +
 `network interface revert -vserver Cluster -lif *`
 
